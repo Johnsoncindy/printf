@@ -4,6 +4,7 @@
  * @format: string to be formatted
  * Return: string representation
  */
+int _printf(const char *format, ...);
 int _printf(const char *format, ...)
 {
 	va_list args;
