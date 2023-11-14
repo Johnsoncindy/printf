@@ -14,9 +14,9 @@ int handle_specifier(const char format_character, va_list args)
 		case 's':
 			return (_strings(args));
 		case 'd':
-			return (_decimalInt(args));
+			return (_decimalInt(args, 0));
 		case 'i':
-			return (_integers(args));
+			return (_integers(args, 0));
 		case 'b':
 			return (_binaries(args));
 		case 'o':

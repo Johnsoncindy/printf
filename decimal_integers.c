@@ -2,14 +2,26 @@
 /**
  * _integers - Handle the %i.
  * @args: Argument list.
+ * @is_long: Handle the long value
  * Return: characters count.
  */
-int _integers(va_list args);
-int _integers(va_list args)
+int _integers(va_list args, int is_long);
+int _integers(va_list args, int is_long)
 {
-	long numb = va_arg(args, int);
+	int numb;
 	int i, j, length = 0, not_positive = 0, count = 0;
 	char str_int[BUFFER_SIZE], temp;
+
+	if (is_long)
+	{
+		long num = va_arg(args, long);
+
+		numb = (int)num;
+	}
+	else
+	{
+		numb = va_arg(args, int);
+	}
 
 	if (numb < 0)
 	{
@@ -52,9 +64,14 @@ int _integers(va_list args)
 /**
  * _decimalInt - Handle the %i specifier.
  * @args: Argument list.
+ * @is_long: Handle the long value.
  * Return: Count of characters written.
  */
-int _decimalInt(va_list args)
+int _decimalInt(va_list args, int is_long)
 {
-	return (_integers(args));
+	if (is_long)
+	{
+		return (_integers(args, 1));
+	}
+	return (_integers(args, 0));
 }
